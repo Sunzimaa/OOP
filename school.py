@@ -26,12 +26,17 @@ class School:
     def get_courses(self):
         return self.courses
 
-
-    #def add_grade(self):
-    #    if grade not in self.grades:
-    #        self.grades.append(grade)
-
     def add_student_grade(self, student, course, grade):
         if student in self.students and course in self.courses:
             student.add_grade(tuple([course, grade]))
             course.add_grade(tuple([student, grade]))
+
+    def get_students_ordered_by_average_grade(self):
+        for i in range(len(self.students)-1):
+            if self.students[i].get_average_grade() < self.students[i + 1].get_average_grade():
+                help = self.students[i]
+                self.students[i] = self.students[i + 1]
+                self.students[i + 1] = help
+        return self.students
+
+#    print(sorted(self.students, key=lambda student: student.get_average_grade(), reverse=True))
