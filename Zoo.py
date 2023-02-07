@@ -3,6 +3,7 @@
 
 class Animal:
     """Animal class."""
+#0
 
     def __init__(self, name: str, specie: str, age: int):
         """
